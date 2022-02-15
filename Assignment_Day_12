@@ -1,0 +1,257 @@
+*************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_12***********************************************************************************
+*************************************************************************************************************************************************************************************
+//Q.1) create a HashSet class by add 10 numbers by using for loop and extra add some more objects and print the all the values
+package com.ia.collection;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class HashSetEx1 {
+	public static void main(String[] args) {
+		HashSet hs = new HashSet();
+		for(int i=0;i<10;i++) {
+			hs.add(i);
+		}
+		hs.add("bharat");
+		hs.add("pratik");
+		Iterator it=hs.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+	}
+}
+
+=================================================================================================
+
+//Q.2) create a LinkedHashSet class by add 10 numbers by using for loop and extra add some more objects and print the all the values.
+package com.ia.collection;
+
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+
+public class LnkHs {
+	public static void main(String[] args) {
+		LinkedHashSet Lkhs = new LinkedHashSet();
+		for(int i=0;i<10;i++) {
+			Lkhs.add(i);
+			
+		}
+		Lkhs.add("Sahil");
+		Lkhs.add("Mehul");
+		Lkhs.add("Bharat");
+		Iterator it = Lkhs.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+	}
+
+}
+
+==================================================================================================
+
+//Q.3)  By using Iterator class iterate the HashSet class Elements.
+package com.ia.collection;
+
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class ItHsEx {
+	public static void main(String[] args) {
+		HashSet ItHs = new HashSet();
+		ItHs.add("Bharat");
+		ItHs.add("Raghu");
+		ItHs.add("Vimika");
+		ItHs.add("Vimu");
+		Iterator it = ItHs.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+		
+	}
+
+}
+
+====================================================================================================
+
+//Q.4) By using Iterator class iterate the LinkedHashSet Elements.
+package com.ia.collection;
+
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+
+public class ItLHs {
+	public static void main(String[] args) {
+		LinkedHashSet ItLHs = new LinkedHashSet();
+		ItLHs.add("Bharat");
+		ItLHs.add("Raghu");
+		ItLHs.add("Vimika");
+		ItLHs.add("Vimu");
+		Iterator it = ItLHs.iterator();
+		while(it.hasNext())
+		{
+			System.out.println(it.next());
+		}
+		
+	}
+
+}
+
+===============================================================================================
+
+//Q.5) By using generics cretae hashset class apply some methods,addall(),remove().
+package com.ia.collection;
+
+import java.util.HashSet;
+
+public class GenHs {
+	public static void main(String[] args) {
+		HashSet<Integer> GenHs = new HashSet();
+		GenHs.add(87);
+		GenHs.add(85);
+		GenHs.add(83);
+		GenHs.add(82);
+		GenHs.add(81);
+		GenHs.add(88);
+		GenHs.add(45);
+		System.out.println(GenHs);
+		HashSet<Integer> GeHs = new HashSet();
+		GeHs.add(78);
+		GeHs.add(56);
+		GeHs.add(34);
+		
+		GenHs.addAll(GeHs);
+		System.out.println(GenHs);
+		GenHs.remove(88);
+		System.out.println(GenHs);
+		
+	}
+	
+
+}
+
+====================================================================================================
+
+//Q.6) create a class and print the elements by using keySet.
+package com.ia.collection;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class KeySetEx {
+	public static void main(String[] args) {
+		
+		TreeMap<Integer,String> tm= new TreeMap();
+		
+		tm.put(111, "ramesh");
+		tm.put(112, "sai");
+		tm.put(114, "harish");
+		tm.put(116, "mahesh");
+		tm.put(119, "amender");
+		System.out.println(tm);
+		
+		Set<Integer> values=tm.keySet();
+		
+		Iterator itr=values.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+	}
+	}
+
+}
+
+==================================================================================================
+
+//Q.7) Create a class print all the elements with EntrySet.
+package com.ia.collection;
+
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class EntrySetEx {
+public static void main(String[] args) {
+		
+		TreeMap<Integer,String> tm= new TreeMap();
+		
+		tm.put(165, "rahul");
+		tm.put(198, "diya");
+		tm.put(132, "snehaa");
+		tm.put(141, "neha");
+		
+		System.out.println(tm);
+		
+		Set<Entry<Integer,String>> result=tm.entrySet();
+		
+		Iterator itr=result.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+        
+		
+	}
+
+
+}
+
+==========================================================================================
+//Q.8) Create a class with HashMap use to print the values.
+package com.ia.collection;
+
+import java.util.HashMap;
+
+public class HashMapEx {
+	public static void main(String[] args) {
+		HashMap<Integer,String> Hs = new HashMap();
+		Hs.put(101,"raju");
+		Hs.put(209,"Ranu");
+		Hs.put(678, "Rahul");
+		Hs.put(697, "Ramesh");
+		System.out.println(Hs);
+		System.out.println(Hs.get(209));
+		System.out.println(Hs.isEmpty());
+		System.out.println(Hs.containsKey(697));
+		System.out.println(Hs.remove(697));
+		System.out.println(Hs.size());
+		Hs.clear();
+		System.out.println(Hs.size());
+		System.out.println(Hs);
+	}
+
+}
+
+==========================================================================================
+//Q.9) By Using LinkedHashMap add elements and print the values.
+package com.ia.collection;
+
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class LinkHashMapEx {
+	public static void main(String[] args) {
+		LinkedHashMap Lhm = new LinkedHashMap();
+		Lhm.put(506, "Raghu");
+		Lhm.put(698, "Rinku");
+		Lhm.put(765, "pratieek");
+		Lhm.put(809,"Anchal");
+		Lhm.put(675, "Senorita");
+		System.out.println(Lhm);
+		Set<Entry<Integer,String>> it = Lhm.entrySet();
+		Iterator itrr = it.iterator();
+		while(itrr.hasNext())
+		{
+			System.out.println(itrr.next());
+		}
+		
+	}
+
+}

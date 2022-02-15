@@ -1,0 +1,267 @@
+************************************************************************************************************************************************************************************
+*****************************************************************************ASSIGNMENT_DAY-11_*************************************************************************************
+************************************************************************************************************************************************************************************
+//Q.1)Create a class of ArrayList and add the objects by using add method and print the all the values which you added.
+package com.ia.collection;
+import java.util.ArrayList;
+
+public class ArrayListEx {
+	public static void main(String[] args)
+	{
+		ArrayList a1 = new ArrayList();
+		a1.add(45);
+		a1.add("Raju");
+		a1.add(75.0f);
+		a1.add(true);
+		a1.add(null);
+		
+		System.out.println("ArrayList is : "+a1);
+	}
+
+}
+------------------------------------------------------------------------------------------
+
+//Q.2)Create a of Linked List add the heterogenous objects print all the objects.
+package com.ia.collection;
+import java.util.LinkedList;
+
+public class LinkedListEx {
+	public static void main(String[] args)
+	{
+		LinkedList li = new LinkedList();
+		li.add(87);
+		li.add("Raghu");
+		li.add(76.8f);
+		li.add(null);
+		li.add('e');
+				System.out.println("Size of list:"+li.size());
+				System.out.println("contain method:"+li.contains("Raghu"));
+				System.out.println("Size of list:"+li.isEmpty());
+				System.out.println("Size of list:"+li.size());
+				System.out.println("Size of list:"+li.size());
+				
+	}
+
+}
+
+
+-----------------------------------------------------------------------------------------------
+
+//Q.3)Create a LinkedList class and apply different methods for that class size(),contains(),isEmpty(),getFisrt(). print the results.
+package com.ia.collection;
+import java.util.LinkedList;
+
+public class LinkedListEx1 {
+	public static void main(String[] args) {
+		LinkedList li1 = new LinkedList();
+		li1.add(67);
+		li1.add("Bharat");
+		li1.add(true);
+		li1.add(89.0f);
+		li1.add(null);
+		System.out.println("Size of list is : "+li1.size());
+		System.out.println("List is Empty or Not : "+li1.isEmpty());
+		System.out.println("List Contains : "+li1.contains("Bharat"));
+		System.out.println("List first element : "+li1.getFirst());
+		
+		
+	}
+
+}
+
+--------------------------------------------------------------------------------------------------------
+
+//Q.4)class name is test and taking arraylist object add different objects and print the values by using for loop and foreach loop
+package com.ia.collection;
+import java.util.ArrayList;
+
+public class Test {
+	public static void main(String[] args)
+	{
+		ArrayList al=new ArrayList();
+		al.add(87);
+		al.add("Raghav");
+		al.add("45.0f");
+		al.add(true);
+		al.add(65);
+		System.out.println("Values in ArrayList is :" +al);
+		//Using For Loop printing values
+		System.out.println("Values using For Loop");
+		for(int i=0;i<al.size();i++)
+		{
+			System.out.println(al.get(i));
+			
+		}
+		//Using For Each Loop
+		System.out.println("Values using For Each Loop");
+		for(Object o:al) {
+			System.out.println(o);
+			
+		}
+		
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+//Q.5)Create a class with generics(perticular type integer) and add the values print even numbers.
+package com.ia.collection;
+import java.util.ArrayList;
+
+public class GenericEx {
+	public static void main(String[] args)
+	{
+		ArrayList<Integer> a1 = new <ArrayList> ArrayList();
+		a1.add(23);
+		a1.add(76);
+		a1.add(89);
+		a1.add(85);
+		for(int i=0;i<a1.size();i++)
+		{
+			if(i%2==0)
+			{
+				System.out.println(i);
+			}
+		}
+	}
+
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+//Q.6)Create a ArrayList class by using Iterator print the values.
+package com.ia.collection;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class IteratorEx {
+	public static void main(String[] args)
+	{
+		ArrayList<Integer> list= new  ArrayList();
+		list.add(87);
+		list.add(56);
+		list.add(32);
+		list.add(67);
+		list.add(98);
+		list.add(45);
+		list.add(76);
+		Iterator it = list.iterator();
+		System.out.println("list all element : ");
+		while(it.hasNext())
+		{
+			System.out.println(it.next() + " ");
+		}
+		System.out.println();
+	}
+
+}
+
+------------------------------------------------------------------------------------------------------------------
+
+//Q.7)Create a class with generics and apply ListIterator cursor on that class and print the values.
+package com.ia.collection;
+import java.util.ArrayList;
+import java.util.ListIterator;
+
+public class ListIteratorEx {
+	public static void main(String[] args)
+	{
+		ArrayList<Integer> li= new  ArrayList();
+		li.add(87);
+		li.add(56);
+		li.add(32);
+		li.add(67);
+		li.add(98);
+		li.add(45);
+		li.add(76);
+		ListIterator it = li.listIterator();
+		System.out.println("list all element : ");
+		while(it.hasNext())
+		{
+			System.out.println(it.next() + " ");
+		}
+		System.out.println("reverse direction");
+		
+		
+		while(it.hasPrevious()) {
+			System.out.println(it.previous());
+		}
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------
+
+//Q.8) Create a of HasSet add the heterogenous objects print all the objects
+package com.ia.collection;
+
+import java.util.HashSet;
+
+public class HashSetEx {
+	public static void main(String[] args) {
+		HashSet li=new HashSet();
+		li.add("Ragnath");
+		li.add("raghu");
+		li.add("raghu");
+		li.add("bharat");
+		li.add(90);
+		li.add(87);
+		li.add(90);
+		li.add(86);
+		li.add(87);
+		System.out.println(li);
+	}
+
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+//Q.9) Create a of Linked HashSet add the heterogenous objects print all the objects.
+package com.ia.collection;
+
+import java.util.LinkedHashSet;
+
+public class LnkdHs {
+	public static void main(String[] args) {
+		LinkedHashSet li=new LinkedHashSet();
+		li.add("Ragnath");
+		li.add("raghu");
+		li.add("raghu");
+		li.add("bharat");
+		li.add(90);
+		li.add(87);
+		li.add(90);
+		li.add(86);
+		li.add(87);
+		System.out.println(li);
+	}
+
+}
+
+--------------------------------------------------------------------------------------------------------------------
+
+//Q.10) By using Generics create Tree Set and print the all the values.S
+package com.ia.collection;
+
+import java.util.TreeSet;
+
+public class TreeSetEx {
+	public static void main(String[] args) {
+		TreeSet<Integer> li= new TreeSet();
+		li.add(90);
+		li.add(87);
+		li.add(90);
+		li.add(86);
+		li.add(87);
+		li.add(90);
+		li.add(85);
+		li.add(91);
+		li.add(86);
+		li.add(89);
+		System.out.println(li);
+	}
+}
+
+
+

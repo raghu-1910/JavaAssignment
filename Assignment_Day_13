@@ -1,0 +1,215 @@
+*************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_13***********************************************************************************
+*************************************************************************************************************************************************************************************
+
+//Q.1) Create a class name Demo, create a file.
+//Q.2)create a class and add file and folder into the project.
+package files;
+
+import java.io.File;
+import java.io.IOException;
+
+public class Test {
+	public static void main(String[] args) throws IOException {
+		File fc = new File("Welcome.txt");
+		File f1 = new File("Raghu");
+		boolean b = f1.mkdir();
+		fc.createNewFile();
+		System.out.println("Folder is created : ");
+		System.out.println("File Created : ");
+	}
+
+}
+
+=============================================================================================
+
+//Q.3) create a class and write the information by using File Writer
+package files;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileWriterEx {
+	public static void main(String[] args) throws IOException {
+		
+	FileWriter fw = new FileWriter("Welcome.txt");
+	fw.write("Welcome");
+	fw.write("to");
+	fw.write("my");
+	fw.write("town");
+	fw.write(98);
+	fw.write(114);
+	fw.close();
+	System.out.println("Data inserted : ");
+	}
+
+}
+
+===========================================================================================
+
+//Q.4) create a class and write the information by using Buffered Writer.
+package files;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class BufferedWriterEx {
+	public static void main(String[] args) throws IOException {
+		
+	FileWriter fw = new FileWriter("Welcome.txt");
+	BufferedWriter bw = new BufferedWriter(fw);
+	bw.write("Welcome");
+	bw.write("to");
+	bw.write("my");
+	bw.write("town");
+	bw.write(98);
+	//bw.write(114);
+	bw.close();
+	System.out.println("Data inserted : ");
+	}
+
+}
+
+===================================================================================================
+
+//Q.5) create a class and write the information by using Print Writer.
+package files;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class PrintWriterEx {
+	public static void main(String[] args) throws IOException {
+		FileWriter fw = new FileWriter("Welcome.txt");
+		PrintWriter pw = new PrintWriter(fw);
+		pw.print("How");
+		pw.print("Are");
+		pw.print("You");
+		pw.print("Brother");
+		pw.print(34);
+		pw.print(67);
+		pw.close();
+		System.out.println("Data Inserted : ");
+	}
+
+}
+
+=======================================================================================================
+
+//Q.6) create a class and read the information by using File Reader.
+package files;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FileReaderEx {
+	public static void main(String[] args) throws IOException {
+		FileReader fr = new FileReader("Welcome.txt");
+		while(fr.read()!=-1)
+		{
+			char c = (char) fr.read();
+			System.out.println(c);
+		}
+		
+	}
+
+}
+
+============================================================================================================
+
+//Q.7) create a class and read the information by using Buffered Reader
+package files;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class BufferedReaderEx {
+	public static void main(String[] args) throws IOException {
+		FileReader fr = new FileReader("Welcome.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String data=br.readLine();
+		while(data!=null)
+		{
+			System.out.println(data);
+			data=br.readLine();
+		}
+	}
+}
+
+================================================================================================================
+
+//Q.8) create a class ArrayList apply without generics.
+package files;
+import java.util.ArrayList;
+
+	public class ArrLsWiGen {
+		public static void main(String[] args)
+		{
+			ArrayList a1 = new ArrayList();
+			a1.add(45);
+			a1.add("Raju");
+			a1.add(75.0f);
+			a1.add(true);
+			a1.add(null);
+			
+			System.out.println("ArrayList is : "+a1);
+		}
+
+	}
+
+
+=====================================================================================================================
+
+//Q.9) create a class LinkedList apply with generics.
+package files;
+
+import java.util.LinkedList;
+
+public class LinLsGen {
+	public static void main(String[] args)
+	{
+		LinkedList<Integer> li = new LinkedList();
+		li.add(87);
+		li.add(56);
+		li.add(77);
+		li.add(89);
+		li.add(54);
+		System.out.println(li);
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

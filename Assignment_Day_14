@@ -1,0 +1,149 @@
+*************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_14***********************************************************************************
+*************************************************************************************************************************************************************************************
+// Q.1) create a class and with divide two numbers by using Scanner class.(z=a/b).without try catch 
+package com.io.Exception;
+
+import java.util.Scanner;
+
+public class Test {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter first Number: " );
+		int fnum = sc.nextInt();
+		System.out.println("Enter Second Number : ");
+		int fs = sc.nextInt();
+		int z=fnum/fs;
+		System.out.println("Division of Number is : " +z);
+		
+		
+		
+	}
+
+}
+
+===============================================================================================
+//Q.2) create a class and take the input from by using scanner class, as a end user take two numbers with division and observe which type of exception raised. and apply try catch blocks
+package com.io.Exception;
+
+import java.util.Scanner;
+
+public class ExceptionEx1 {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter first Number: " );
+		int fnum = sc.nextInt();
+		System.out.println("Enter Second Number : ");
+		int fs = sc.nextInt();
+		try{
+			int z=fnum/fs;
+		System.out.println("Division of Number is : " +z);
+		}
+		catch(ArithmeticException ae)
+		{
+			System.out.println("Don't give input denominantor as Zero");
+		}
+		finally {
+			System.out.println("Hello world");
+		}
+		System.out.println("Rest of the code:");
+	}
+
+}
+
+===================================================================================================
+
+//Q.3) Create a class with single try multi catch blocks.
+package com.io.Exception;
+
+public class ExceptionEx2 {
+	public static void main(String[] args) {
+		try{int[] a = new int[5];
+		//a[5]=30/0;
+		//a[5]=30/4;
+		a[4]=30/4;
+		//String s = null;
+		String s = "234";
+		int x = Integer.parseInt(s);
+		System.out.println("No Error "+a[4]+" "+ x);
+		}
+		catch(ArithmeticException ae) {
+			System.out.println("Don't Give input as Zero in denominantor");
+		}
+		catch(ArrayIndexOutOfBoundsException ae) {
+			System.out.println("Please enter array in index range");
+		}
+		catch(NumberFormatException ae) {
+			System.out.println("Write in right format");
+		}
+		finally {
+			System.out.println("Hello java Programmer");
+		}
+		System.out.println("Rest of the code");
+		
+	}
+
+}
+
+================================================================================================
+
+//Q.4) create a class with user defined exceptions.
+package com.io.Exception;
+
+class MyException extends Exception{
+	private int age;
+
+	public MyException(int age) {
+		this.age=age;
+	}
+	
+	public String toString() {
+		return "you are not eligible for vote : ";
+	}
+	
+}
+
+public class ExceEx {
+	static  void validation(int age) throws MyException {
+    	if (age<18)
+    		throw new MyException(age);
+    	else
+    		System.out.println("you are eligible for vote : "+age);
+    }
+public static void main(String[] args) throws MyException {
+	
+	ExceEx.validation(12);
+	//ExceEx.validation(32);
+
+	System.out.println("rest of the code");
+	
+	}
+
+}
+
+=======================================================================================================
+
+//Q.5) create a class with Marks, and valid Marks method, give some number marks are less than he/she fails otherwise pass by using throw keyword.
+package com.io.Exception;
+
+public class Marks {
+	public void pass(int marks) {
+			
+			if (marks<25)
+				throw new ArithmeticException("you are failed");
+			
+			else
+			{
+				System.out.println("you are passed:"+marks);
+			}
+		}
+	public static void main(String[] args) {
+		
+		Marks test= new Marks();
+		test.pass(22);
+		System.out.println("welcome");
+		
+	
+}
+
+}

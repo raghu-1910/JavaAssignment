@@ -1,0 +1,174 @@
+*************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_15***********************************************************************************
+*************************************************************************************************************************************************************************************
+//Q.1) Create a Thread by extending the Thread class.
+package com.ia.multithreading;
+
+import java.util.Iterator;
+
+class MyThread extends Thread{
+	public void run() {
+		for(int i=0 ; i<10;i++) {
+	
+		System.out.println("Child Thread");
+		}
+	}
+}
+
+public class ThreadEx {
+	public static void main(String[] args) {
+		MyThread mt = new MyThread();
+		//mt.run()//Normal method calling
+		mt.start();//internally call a run method
+		for(int i=0 ; i<10;i++) {
+		System.out.println("Main Thread:");
+	}
+	}
+}
+============================================================================
+//Q.2) Create a Thread by Implements the Runnable Interface.
+package com.ia.multithreading;
+
+class Demo implements Runnable 
+{
+	public void run() {
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("child thread:");
+		}
+	}
+}
+public class RunnableEx {
+	public static void main(String[] args) {
+		Demo mt = new Demo();
+		Thread t=new Thread(mt);
+		t.start();
+		for(int i=0 ;i<10;i++)
+		{
+			System.out.println("Main Thread:");
+		}
+		
+		
+	}
+
+}
+====================================================================================
+//Q.3) Create a Thread by extending Thread class set and get the name of thread.
+package com.ia.multithreading;
+
+class Demo1 extends Thread{
+	public void run() {
+		Thread.currentThread().setName("Rahul");//Setting new of the thread using setName()
+		System.out.println(Thread.currentThread().getName());//Getting new name of the thread using getName()
+	}
+}
+
+public class GetNameEx {
+	public static void main(String[] args) {
+		Demo1 d = new Demo1();
+		d.start();
+		Thread.currentThread().setName("Bhati");
+		System.out.println(Thread.currentThread().getName());
+		
+	}
+}
+=========================================================================================
+//Q.4) Create a Thread by extending Thread class set and get the priority of thread.
+package com.ia.multithreading;
+
+class Demo2 extends Thread{
+	public void run()
+{		
+		System.out.println("Child");
+		System.out.println("Child Thread:"+Thread.currentThread().getPriority());
+		}
+}
+
+public class PriorityEx {
+	public static void main(String[] args) {
+		Demo2 d = new Demo2();
+		d.setPriority(8);
+		d.start();
+		System.out.println("main");
+		Thread.currentThread().setPriority(10);
+		System.out.println("Main Thread:"+Thread.currentThread().getPriority());
+		
+	}
+
+}
+===========================================================================================
+//Q.5)  Create a Thread by extending Thread class apply Yield Method.
+package com.ia.multithreading;
+class Demo3 extends Thread{
+	public void run() {
+			for (int i = 0; i < 10; i++) {
+				System.out.println("child thread"); //child thread
+				
+				Thread.yield();
+			}
+	}
+}
+
+public class YieldEx {
+	public static void main(String[] args) {
+
+		Demo3 d= new Demo3();
+		d.start();
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println("main thread"); 
+		}
+		
+	}
+
+}
+================================================================================================
+//Q.6) Create a Thread by extending Thread class apply join Method.
+package com.ia.multithreading;
+class Demo4 extends Thread{
+	public void run() {
+		for(int i=0;i<10;i++) {
+			System.out.println("Child Thread:");
+		}
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+}
+
+public class JoinEx {
+	public static void main(String[] args) throws InterruptedException {
+		Demo4 d = new Demo4();
+		d.join();
+		for(int i=0;i<10;i++) {
+		System.out.println("main thread:");
+			Thread.yield();
+		
+		}
+	}
+}
+==================================================================================================
+//Q.7)	Create a Thread by extending Thread class apply sleep Method.
+package com.ia.multithreading;
+
+public class SleepEx {
+	public static void main(String[] args) {
+		for(int i=0;i<10;i++)
+		{
+			System.out.println("Slide Show:");
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+}
+==================================================================================================

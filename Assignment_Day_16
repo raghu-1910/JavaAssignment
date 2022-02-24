@@ -1,0 +1,151 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_16***********************************************************************************
+*************************************************************************************************************************************************************************************
+//Q.1) Example of lambda expression.
+package com.ia.java8;
+
+interface Demo{
+	public void m1();
+}
+
+public class LambdaEx {
+	public static void main(String[] args) {
+		int size=10;
+		
+		Demo d=()-> {
+			System.out.println("Size is:"+size);
+		};
+		d.m1();
+}
+}
+===============================================================================
+
+//Q.2) Create a Runnable interface and apply lamda expression.
+package com.ia.java8;
+
+public class RunnInterEx {
+	public static void main(String[] args) {
+		Runnable r=()-> {
+			for(int i=0;i<10;i++) {
+				System.out.println("child thread");
+			}
+		};
+		Thread th= new Thread(r);
+		th.start();
+		for(int i=0;i<10;i++) {
+			System.out.println("main thread");
+		}
+	}
+
+}
+============================================================================
+
+// Q.3) Create a class SqureRoot apply lamdaexpreesions.
+package com.ia.java8;
+
+import java.util.Scanner;
+
+interface Interf{
+	public void m2();
+}
+public class SquareEx {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int n = sc.nextInt();
+		Interf squr = ()->{System.out.println("Square root is:"+Math.sqrt(n));};
+		squr.m2();
+	}
+
+}
+======================================================================================
+
+//Q.4) Create a class with addition method with parameters.
+package com.ia.java8;
+
+interface Add{
+	public int add(int a,int b);
+}
+public class AddParmEx {
+	public static void main(String[] args) {
+		Add sum=(int a,int b)->(a+b);
+		System.out.println("Sum is :"+(sum.add(4,5)));
+	}
+
+}
+=====================================================================================
+
+//Q.5) Create a ArrayList class add values apply lamda expression.
+package com.ia.java8;
+
+import java.util.ArrayList;
+
+interface ArrayLst{
+	public void arr();
+}
+public class ArrayListEx {
+	public static void main(String[] args) {
+		ArrayList a=new ArrayList();
+		a.add(13);
+		a.add(203);
+		a.add(174);
+		a.add(142);
+		a.add(173);
+		a.add(36);
+		ArrayLst ar=()->System.out.println(a);
+		ar.arr();
+	}
+
+}
+=============================================================================================
+
+//Q.6) Take predicate functional interface test given value even number or not.
+package com.ia.java8;
+
+import java.util.function.Predicate;
+
+public class EvenOddEx {
+	public static void main(String[] args) {
+		Predicate<Integer> objPredicate=num->(num%2==0);
+		System.out.println(objPredicate.test(16));
+	}
+}
+
+================================================================================================
+
+//Q.7) Take predicate functional interface test length of the given name is greater than 6 or not?.
+package com.ia.java8;
+
+import java.util.function.Predicate;
+
+public class StringLenEx {
+	public static void main(String[] args) {
+		Predicate<String> p = t -> t.length()>6;
+		System.out.println(p.test("rangnath"));
+	}
+
+}
+
+===================================================================================================
+
+//Q.8) Create a employee class with ArrayList class add key value pair name,salary, findout salary>7000?.
+package com.ia.java8;
+
+import java.util.ArrayList;
+import java.util.function.Predicate;
+
+class Emp{
+	String empname;
+	int empsal;
+}
+
+public class EmployeeEx {
+	public static void main(String[] args) {
+		Emp emp=new Emp();
+		ArrayList<Emp> list=new ArrayList<>();
+		emp.empname="bharatkumar";
+		emp.empsal=7654;
+		Predicate<Emp> p=emp1->emp.empsal>7000;
+		System.out.println(p.test(emp));
+}
+}
+

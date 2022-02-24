@@ -1,0 +1,147 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_DAY_18***********************************************************************************
+*************************************************************************************************************************************************************************************
+JDBC IMPLEMENTATION
+===================
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Test {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		//Loading Driver class
+		Class.forName("org.postgresql.Driver");
+		
+		//For connection establish
+		Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost/raghu","postgres","45");
+		
+		//create statement
+		Statement stmt =conn.createStatement();
+		
+		//Excute Query
+		boolean result= stmt.execute("create table rcc(sid int,sname varchar(10))");
+		conn.close();
+		System.out.println("Table Created:"+result);
+	}
+
+}
+======================================================================
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Test1 {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Class.forName("org.postgresql.Driver");
+		
+		Connection conn =DriverManager.getConnection("jdbc:postgresql://localhost/raghu","postgres","45");
+		
+		Statement stmt=conn.createStatement();
+		
+		int result=stmt.executeUpdate("insert into rcc values(123,'raghu')");
+		 conn.close();
+		 System.out.println("Inserted values:"+result);
+	}
+}
+=========================================================================
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Test3 {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Class.forName("org.postgresql.Driver");
+		
+		Connection conn =DriverManager.getConnection("jdbc:postgresql://localhost/raghu","postgres","45");
+		
+		Statement stmt=conn.createStatement();
+		
+		int result=stmt.executeUpdate("update  rcc set sname='raghu' where sid=101");
+		
+		conn.close();
+		System.out.println("Updated:"+result);
+         }
+	}
+==============================================================================
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Test4 {
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		Class.forName("org.postgresql.Driver");
+		
+		Connection conn =DriverManager.getConnection("jdbc:postgresql://localhost/raghu","postgres","45");
+		
+		Statement stmt=conn.createStatement();
+		
+		
+		 ResultSet result=stmt.executeQuery("select * from rcc");
+		 
+		 while(result.next()) {
+      	   System.out.println(result.getInt(1)+"  "+result.getString(2));
+		 }
+      	   conn.close();
+		System.out.println("fetching values!");
+         
+	}
+}
+======================================================================================
+package jdbc;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class PrepareEx {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		//End user input using Scanner
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter your username");
+		String uname=sc.next();
+		System.out.println("Enter your password");
+		String pwd=sc.next();
+		
+		//loading Drivers
+        Class.forName("org.postgresql.Driver");
+
+	 
+        //Connection establishing
+        Connection conn=DriverManager.getConnection("jdbc:postgresql://localhost/students","postgres","postgres");
+
+
+        //Create Statement using predefine method
+        PreparedStatement stmt=conn.prepareStatement("select * from users where username=? and password=?");
+             
+              stmt.setString(1, uname);//at index 1 username 
+              stmt.setString(2, pwd);//at index 2 password check
+           //Execute the query  
+              ResultSet result=stmt.executeQuery();
+              //using condition check uname or password match or not
+              if(result.next()) {
+            	  System.out.println("login succuss");
+              }else
+              {
+            	  System.out.println("login denied....enter correct details");
+              }
+              
+              conn.close();//Using this connection close
+	}
+}

@@ -1,0 +1,179 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSIGNMENT_ON_REGULAR_EXPRESSION***********************************************************************************
+*************************************************************************************************************************************************************************************
+package regular.expression;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class MobileNoValidEx {
+	public static void main(String[] args) {
+		
+		
+		Pattern p= Pattern.compile("(0|91)?[7-9][0-9]{9}"); 
+		
+		Matcher m=p.matcher(args[0]);
+		
+		if(m.find() && m.group().equals(args[0])) {
+			
+			System.out.println("valid mobile number");
+		}
+		else
+		{
+			System.out.println("invalid number");
+		}
+	}
+
+}
+
+==============================================================================================
+
+package regular.expression;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexEx1 {
+	public static void main(String[] args) {
+		int count=0;
+		Pattern p = Pattern.compile("ababbbababa");
+		Matcher m = p.matcher("ab");
+		while(m.find())
+		{	count++;
+			System.out.println(m.start()+" "+m.end()+" "+m.group());
+		}
+		System.out.println(count);
+	}
+}
+
+==================================================================================================
+
+package regular.expression;
+
+import java.time.LocalTime;
+
+public class TimeEx {
+	public static void main(String[] args) {
+		
+		LocalTime tt=LocalTime.now();
+		System.out.println(tt);
+	}
+}
+
+======================================================================================================
+
+package regular.expression;
+
+import java.time.LocalTime;
+
+public class TimeEx1 {
+	public static void main(String[] args) {
+		
+		
+		LocalTime time=LocalTime.now();
+		
+		int h=time.getHour();
+		int m=time.getMinute();
+	   int s=time.getSecond();
+		int ms=time.getNano();
+		
+		System.out.println("Time is:"+h+":"+ m+":"+s +":"+ms);
+	}
+}
+
+===========================================================================================================
+
+package regular.expression;
+
+import java.time.LocalDateTime;
+
+public class LocalTimeDateEx {
+	public static void main(String[] args) {
+		
+		LocalDateTime td = LocalDateTime.now();
+		System.out.println(td);
+		
+	}
+
+}
+
+==================================================================================================================
+
+package regular.expression;
+
+import java.time.LocalDate;
+
+public class DateEx {
+	public static void main(String[] args) {
+		
+		LocalDate dd = LocalDate.now();
+		System.out.println(dd);
+	}
+
+}
+
+====================================================================================================================
+
+package regular.expression;
+
+import java.time.LocalDate;
+
+public class DateEx1 {
+	public static void main(String[] args) {
+		
+		
+		LocalDate d=LocalDate.now();
+		
+		System.out.println(d);
+		
+		int day=d.getDayOfMonth();
+		int month=d.getMonthValue();
+		int year=d.getYear();
+		
+		System.out.println(day+ "-"+month+"-"+year);
+		System.out.printf("%d-%d-%d",day,month,year);
+		
+	}
+
+
+}
+
+===========================================================================================================================
+
+package regular.expression;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public class CountPeriodEx {
+	public static void main(String[] args) {
+		
+		LocalDate birthdy= LocalDate.of(2000, 04, 15);
+		
+		LocalDate tody=LocalDate.now();
+		
+		Period p=Period.between(birthdy, tody);
+		
+		System.out.printf("Age is %d years %d months %d days ",p.getYears(),p.getMonths(),p.getDays());
+	}
+
+}
+
+=========================================================================================================================
+
+package regular.expression;
+
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+
+public class ZoneEx {
+public static void main(String[] args) {
+		
+		ZoneId zone= ZoneId.systemDefault();
+		System.out.println(zone);
+		
+		ZoneId zid=ZoneId.of("Asia/Singapore");
+		ZonedDateTime datetime= ZonedDateTime.now(zid);
+		System.out.println(datetime);
+	}
+}

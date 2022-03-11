@@ -1,0 +1,180 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSINGMENT_JPQL************************************************************************************
+*************************************************************************************************************************************************************************************
+JPQL in JPA:-
+==============
+Employee:-
+----------
+package com.ia.jpql;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Employee1 {
+	@Id
+	private int eid;
+	private String ename;
+	private int esal;
+	private String eadd;
+	public int getEid() {
+		return eid;
+	}
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
+	public String getEname() {
+		return ename;
+	}
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+	public int getEsal() {
+		return esal;
+	}
+	public void setEsal(int esal) {
+		this.esal = esal;
+	}
+	public String getEadd() {
+		return eadd;
+	}
+	public void setEadd(String eadd) {
+		this.eadd = eadd;
+	}
+	public Employee1() {
+		// TODO Auto-generated constructor stub
+	}
+	public Employee1(int eid, String ename, int esal, String eadd) {
+		super();
+		this.eid = eid;
+		this.ename = ename;
+		this.esal = esal;
+		this.eadd = eadd;
+	}
+	@Override
+	public String toString() {
+		return "Employee1 [eid=" + eid + ", ename=" + ename + ", esal=" + esal + ", eadd=" + eadd + "]";
+	}
+	
+
+}
+
+
+------------------------------------------------------------------------------------------------------
+
+Client:-
+--------
+package com.ia.jpql;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+
+
+public class Test {
+	public static void main(String[] args) {
+		EntityManagerFactory factory=Persistence.createEntityManagerFactory("jpqlex");
+		
+		EntityManager entity=factory.createEntityManager();
+		
+		entity.getTransaction().begin();
+//************************Inserting data*******************************************************************
+		
+//		Employee1 e = new Employee1(101,"raghu",30000,"revdar");
+//		Employee1 e1 = new Employee1(102,"rajuu",63000,"revda");
+//		Employee1 e2 = new Employee1(103,"ramu",47000,"rev");
+//		Employee1 e3 = new Employee1(104,"rahul",20000,"revdr");
+//		Employee1 e4= new Employee1(105,"rakesh",40000,"redar");
+//		entity.persist(e);
+//		entity.persist(e1);
+//		entity.persist(e2);
+//		entity.persist(e3);
+//		entity.persist(e4);
+//		entity.getTransaction().commit();
+//		entity.close();
+//		factory.close();
+//		System.out.println("Inserted");
+		
+		
+//**************************For Fechting Employee Details*******************************************************
+		
+//		TypedQuery<Employee1> tq=entity.createQuery("select e from Employee1 e", Employee1.class);
+//		
+//		List<Employee1> ls=tq.getResultList();
+//				
+//		for(Employee1 s:ls) 
+//		{
+//			
+//			System.out.println(s.getEid());
+//			System.out.println(s.getEname());
+//			System.out.println(s.getEsal());
+//			
+//		}
+		
+		
+//**************************update_data**********************************************************************
+//		
+//		 Query result=entity.createQuery("update Employee1 set esal=esal+5000 where esal>40000");
+//    			result.executeUpdate();
+//  
+//******************************Deleting_Data*****************************************************************
+//    			Query result = entity.createQuery("delete from  Employee1 where esal>50000");
+//                       result.executeUpdate();
+// 
+//*****************************for max salary****************************************************************
+
+        	           Query result=entity.createQuery("select MAX(e.esal) FROM Employee1 e");
+        	           
+        	                   int maxsal= (int) result.getSingleResult();
+        	                   
+        	                   System.out.println(maxsal);
+		
+		entity.getTransaction().commit();
+//         entity.close();
+//		factory.close();
+		
+		
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------
+
+Persistence:-
+--------------
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0">
+  
+	<persistence-unit name="jpqlex" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.ia.jpql.Employee1</class>
+		
+		<properties>
+		<!-- database properties -->
+		
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/raghu" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="postgres" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<!-- hibernate properties -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/><!-- create/update  -->
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+		
+	</persistence-unit>
+	
+</persistence>

@@ -1,0 +1,487 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSINGMENT_JPA_AND_JPA_LAYERED*********************************************************************
+*************************************************************************************************************************************************************************************
+JPA DEMO
+==========
+Client:-
+--------
+package com.ia.employeecrud;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class Client {
+	public static void main(String[] args) {
+		EntityManagerFactory factory=Persistence.createEntityManagerFactory("ragu");
+		
+		EntityManager entity=factory.createEntityManager();
+		
+		//persist()==>to save and insert , merge()==>to update, remove()==>to delete,find()==>to fetch
+		Employee emp= new Employee(234,"sahil",67890,"jammu");
+		entity.getTransaction().begin();
+		entity.persist(emp);//inserting
+		entity.getTransaction().commit();
+		Employee emp1= new Employee(24,"sahl",6478,"jamu");
+		entity.getTransaction().begin();
+		entity.persist(emp1);//inserting
+		entity.getTransaction().commit();
+		//fetching the data using id or employee class
+//		Employee emp= entity.find(Employee.class, 234);
+		//updating data
+//		System.out.println(emp);
+//		emp.setEmpadd("hyd");
+//		emp.setEmpname("bharat");
+//		emp.setEmpsal(45678);
+//		entity.getTransaction().begin();
+//		entity.merge(emp);
+//		entity.getTransaction().commit();
+		//entity.remove(emp);
+		
+	}
+
+}
+
+------------------------------------------------------------------------------------
+
+Employee:-
+----------
+
+package com.ia.employeecrud;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//Two Annotation are manadetory for JPA
+
+@Entity
+@Table(name="emp")
+public class Employee {
+	@Id
+	@Column(name="employeeid")
+	private int empid;
+	private String empname;
+	private int empsal;
+	private String empadd;
+	public int getEmpid() {
+		return empid;
+	}
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+	public int getEmpsal() {
+		return empsal;
+	}
+	public void setEmpsal(int empsal) {
+		this.empsal = empsal;
+	}
+	public String getEmpadd() {
+		return empadd;
+	}
+	public void setEmpadd(String empadd) {
+		this.empadd = empadd;
+	}
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+	public Employee(int empid, String empname, int empsal, String empadd) {
+		super();
+		this.empid = empid;
+		this.empname = empname;
+		this.empsal = empsal;
+		this.empadd = empadd;
+	}
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", empname=" + empname + ", empsal=" + empsal + ", empadd=" + empadd + "]";
+	}
+	
+
+}
+
+-------------------------------------------------------------------------------------------------------
+
+persistence:-
+-------------
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+
+version="2.0">
+
+
+
+<persistence-unit name="ragu" transaction-type="RESOURCE_LOCAL">
+
+
+
+<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+<class>com.ia.employeecrud.Employee</class>
+
+
+
+<properties>
+
+<!-- database properties -->
+
+<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/raghu" />
+
+<property name="javax.persistence.jdbc.user" value="postgres" />
+
+<property name="javax.persistence.jdbc.password" value="postgres" />
+
+<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+
+
+
+<!-- hibernate properties -->
+
+<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+
+<property name="hibernate.hbm2ddl.auto" value="create"/> <!-- create/update -->
+
+<property name="hibernate.show_sql" value="true"/>
+
+</properties>
+
+
+
+</persistence-unit>
+
+
+
+</persistence>
+JPA LAYARED ARCHITECTURE OF STUDENT(student nid,name,num,address)
+=================================================================
+Client:-
+-------
+
+package com.ia.client;
+import com.ia.enitites.Student;
+import com.ia.service.StudentService;
+import com.ia.service.StudentServiceImpl;
+
+public class Client {
+	public static void main(String[] args) {
+		//Create object of service
+		StudentService service= new StudentServiceImpl();
+		
+		Student student= new Student(101, "rahul", 10000, "usa");	
+//*****************Add one student detail*******************************
+//   	service.addStudent(student);
+
+
+//**************Finding Student By ID***********************************
+//		student=service.findStudentById(111);
+//  	System.out.println("Student id:" +student.getSid());
+//		System.out.println("Student Name :"+student.getSname());
+//		System.out.println("Student mobile number :"+student.getSnum());
+//		System.out.println("Student Address :"+student.getSadd());
+		
+//**************Update student Details**********************************
+		
+//		student.setSname("rahul");
+//		student.setSadd("delhi");
+//		student.setSnum(9687463537);
+//		
+//		service.updateStudent(student);
+		
+//*****************Delete Student Details******************************
+		service.deleteStudent(student);
+		System.out.println("Finish program");
+	}
+}
+
+---------------------------------------------------------------------------------------------
+
+====
+DAO:-
+=====
+StudentDao:-
+--------------
+package com.ia.dao;
+
+import com.ia.enitites.Student;
+
+public interface StudentDao {
+//Adding all the method which want
+	Student getStudentById(int id);
+	void addStudent(Student student);
+	
+	void updateStudent(Student student);
+	
+	void deleteStudent(Student student);
+	
+	void commitTransaction();
+	
+	void beginTransaction();
+
+}
+
+----------------------------------------------------------------------------------------------
+StudentDaoImpl:-
+===================
+------------------
+package com.ia.dao;
+
+import javax.persistence.EntityManager;
+
+import com.ia.enitites.Student;
+
+public class StudentDaoImpl implements StudentDao {
+	private EntityManager entityManager;
+
+	public StudentDaoImpl() {
+		entityManager = JPAUtil.getEntityManager();
+	}
+
+	public Student getStudentById(int id) {
+		Student student = entityManager.find(Student.class,id);
+		return student;
+	}
+
+	public void addStudent(Student student) {
+		entityManager.persist(student);
+		
+	}
+
+	public void updateStudent(Student student) {
+		entityManager.merge(student);
+		
+	}
+
+	public void deleteStudent(Student student) {
+		entityManager.remove(student);
+		
+	}
+
+	public void commitTransaction() {
+		entityManager.getTransaction().commit();
+		
+	}
+	public void beginTransaction() {
+		entityManager.getTransaction().begin();
+		
+	}
+
+}
+
+-------------------------------------------------------------------------
+
+=======
+JPAUtil:-
+=======
+package com.ia.dao;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+public class JPAUtil {
+
+	private static EntityManagerFactory factory;
+	private static EntityManager entityManager;
+	
+	static {
+		factory = Persistence.createEntityManagerFactory("jpa");
+	}
+	
+	public static EntityManager getEntityManager() {
+		if(entityManager==null || !entityManager.isOpen()) {
+			entityManager = factory.createEntityManager();
+		}
+		return entityManager;
+	}
+	
+}
+
+----------------------------------------------------------------------------
+=======
+Entity:-
+=======
+package com.ia.enitites;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity //annotation complosory in JPA it is create a table
+public class Student {
+	@Id //annotation id is also important in Id it is create a ids
+	private int sid;
+	private String sname;
+	private int snum;
+	private String sadd;
+	public int getSid() {
+		return sid;
+	}
+	//Using gettter and setter
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public int getSnum() {
+		return snum;
+	}
+	public void setSnum(int snum) {
+		this.snum = snum;
+	}
+	public String getSadd() {
+		return sadd;
+	}
+	public void setSadd(String sadd) {
+		this.sadd = sadd;
+	}
+	//Using Default Constructor
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	//Using Constructor
+	public Student(int sid, String sname, int snum, String sadd) {
+		super();
+		this.sid = sid;
+		this.sname = sname;
+		this.snum = snum;
+		this.sadd = sadd;
+	}
+	//Generate toString Method
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", snum=" + snum + ", sadd=" + sadd + "]";
+	}
+	
+
+}
+
+------------------------------------------------------------------------------------------------
+
+StudentService:-
+================
+package com.ia.service;
+
+import com.ia.enitites.Student;
+
+public interface StudentService {
+	void addStudent(Student student);
+	
+	void updateStudent(Student student);
+	
+	void deleteStudent(Student student);
+	
+	Student findStudentById(int id);
+}
+
+-------------------------------------------------------------------------------------------------
+
+StudentServiceImpl:-
+=====================
+package com.ia.service;
+
+import com.ia.dao.StudentDao;
+import com.ia.dao.StudentDaoImpl;
+import com.ia.enitites.Student;
+
+public class StudentServiceImpl implements StudentDao{
+	//All the method for students which we created in interface here want to implements
+	private StudentDao Sdao;
+	 
+	public StudentServiceImpl()
+	{
+		Sdao= new StudentDaoImpl();
+	}
+
+	public Student getStudentById(int id) {
+		Student student=Sdao.getStudentById(id);
+		return student;
+		
+	}
+	public void addStudent(Student student) {
+		Sdao.beginTransaction();
+        Sdao.addStudent(student);
+        Sdao.commitTransaction();
+		
+	}
+
+	public void updateStudent(Student student) {
+		Sdao.beginTransaction();
+        Sdao.updateStudent(student);
+        Sdao.commitTransaction();
+		
+	}
+
+	public void deleteStudent(Student student) {
+		Sdao.beginTransaction();
+        Sdao.deleteStudent(student);
+        Sdao.commitTransaction();
+		
+	}
+
+	@Override
+	public void commitTransaction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void beginTransaction() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+
+---------------------------------------------------------------------------------
+
+============
+Persistence:-
+============
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0">
+  
+	<persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
+	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>com.kt.entities.Student</class>
+		
+		<properties>
+		<!-- database properties -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/raghu" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="raghu" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<!-- hibernate properties -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/><!-- create/update  -->
+			<property name="hibernate.show_sql" value="true"/>
+		</properties>
+		
+	</persistence-unit>
+	
+</persistence>
+
+

@@ -1,0 +1,205 @@
+************************************************************************************************************************************************************************************
+*********************************************************************************ASSINGMENT_21_Spring_core************************************************************************************
+*************************************************************************************************************************************************************************************
+
+Spring core Project:-
+=====================
+package com.ia.springcore;
+
+public class Employee {
+	
+	private int empid;
+	private String empname;
+	private int empsal;
+	
+	
+	
+	Address address;
+	//Using getters and setters
+
+	public int getEmpid() {
+		return empid;
+	}
+
+
+
+	public void setEmpid(int empid) {
+		this.empid = empid;
+	}
+
+
+
+	public String getEmpname() {
+		return empname;
+	}
+
+
+
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+
+
+
+	public int getEmpsal() {
+		return empsal;
+	}
+
+
+
+	public void setEmpsal(int empsal) {
+		this.empsal = empsal;
+	}
+
+
+
+	public Address getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	//Default Constructor
+	public Employee() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+	public Employee(int empid, String empname, int empsal, Address address) {
+		super();
+		this.empid = empid;
+		this.empname = empname;
+		this.empsal = empsal;
+		this.address = address;
+	}
+
+
+	//Using To string method
+	@Override
+	public String toString() {
+		return "Employee [empid=" + empid + ", empname=" + empname + ", empsal=" + empsal + ", address=" + address
+				+ "]";
+	}
+	
+	
+
+}
+
+-------------------------------------------------------------------------------------------
+Address:-
+=========
+package com.ia.springcore;
+
+public class Address {
+	
+	private int honum;
+	private String colony;
+	private String dstrc;
+	private String state;
+	//Getter and setters for address class
+	public int getHonum() {
+		return honum;
+	}
+	public void setHonum(int honum) {
+		this.honum = honum;
+	}
+	public String getColony() {
+		return colony;
+	}
+	public void setColony(String colony) {
+		this.colony = colony;
+	}
+	public String getDstrc() {
+		return dstrc;
+	}
+	public void setDstrc(String dstrc) {
+		this.dstrc = dstrc;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	public Address() {
+		// TODO Auto-generated constructor stub
+	}
+	public Address(int honum, String colony, String dstrc, String state) {
+		super();
+		this.honum = honum;
+		this.colony = colony;
+		this.dstrc = dstrc;
+		this.state = state;
+	}
+	@Override
+	public String toString() {
+		return "Address [honum=" + honum + ", colony=" + colony + ", dstrc=" + dstrc + ", state=" + state + "]";
+	}
+	
+
+}
+
+-------------------------------------------------------------------------------------------------
+Test:-
+======
+package com.ia.springcore;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class Test {
+	public static void main(String[] args) {
+		
+		//Employee emp= new Employee(123,"rsgu",65757,"hyd")
+		
+		//Loading XML in resource using this
+		Resource resource = new ClassPathResource("SpringConfiguration.xml");
+		
+		//Getting all the resource in this factory resource
+		BeanFactory factory = new XmlBeanFactory(resource);
+		
+		//in emp get the object from xml files
+		Employee emp = (Employee) factory.getBean("raghu");
+		System.out.println(emp);
+		
+	}
+
+}
+
+=====================================================================================
+SpringConfiguration:-
+====================
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:annotation-config></context:annotation-config>
+	<bean class="com.ia.springcore.Employee" id= "raghu" autowire = "byType"> <!-- Automatic Creating object -->
+		<property name="empid" value="100"> </property>
+		<property name="empname" value="sathya"> </property>
+		<property name="empsal" value="1000"> </property>
+	<!-- <property name="Address" ref="add"> </property> -->
+	
+		<!-- if we use byName in autowire than we need to give proper id in address bean class like object of class that we give in test class when create Address -->
+		<!-- if we use byType in autowire than we don't need to give a id --></-->
+		
+	</bean>
+	<bean class="com.ia.springcore.Address" id= "add">
+		<property name="honum" value="104"> </property>
+		<property name="colony" value="Guru om kripa"> </property>
+		<property name="dstrc" value="Sirohi"> </property>
+		<property name="state" value="Rajasthan"> </property>
+	
+		
+	</bean>
+		
+</beans>

@@ -1,0 +1,141 @@
+************************************************************************************************************************************************************************************
+*****************************************************************************ASSIGNMENT_DAY_8*************************************************************************************
+************************************************************************************************************************************************************************************
+
+Q.1) Create sample classes to understand boxing & unboxing.
+--------------------------------------------------------------
+package com.oops;
+
+public class AutoBox {
+	public static void main(String[] args) {
+		int a=10;
+		Integer i=Integer.valueOf(a);
+		Integer j=a;
+		System.out.println(a+" "+i+" "+j);
+	}
+
+}
+
+package com.oops;
+
+public class Unbox {
+
+	public static void main(String[] args) {
+		Integer i=new Integer(50);
+		int j=i.intValue();
+		int k=j;
+		System.out.println(i+" "+j+" "+k);
+				
+
+	}
+
+}
+
+===============================================================
+Q.3)create a class and convert all primitive datatypes into wrapper classes.
+----------------------------------------------------------------------------
+package com.oops;
+
+public class Wrapper {
+
+	public static void main(String[] args) {
+		byte b=10;  
+		short s=20;  
+		int i=30;  
+		long l=40;  
+		float f=50.0F;  
+		double d=60.0D;  
+		char c='a';  
+		boolean b2=true; 
+		Byte byteobj=b;  
+		Short shortobj=s;  
+		Integer intobj=i;  
+		Long longobj=l;  
+		Float floatobj=f;  
+		Double doubleobj=d;  
+		Character charobj=c;  
+		Boolean boolobj=b2;  
+		System.out.println("---Printing object values---");  
+		System.out.println("Byte object: "+byteobj);  
+		System.out.println("Short object: "+shortobj);  
+		System.out.println("Integer object: "+intobj);  
+		System.out.println("Long object: "+longobj);  
+		System.out.println("Float object: "+floatobj);  
+		System.out.println("Double object: "+doubleobj);  
+		System.out.println("Character object: "+charobj);  
+		System.out.println("Boolean object: "+boolobj);
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+=====================================================================
+Q.4) create an EnumClass define enum inside class traverse it.
+---------------------------------------------------------------------
+package com.oops;
+
+public class EnumClass {
+	public enum lang {JAVA,JAVASCRIPT,C,PYHTON};
+
+	public static void main(String[] args) {
+		for(lang s:lang.values()){
+			System.out.println(s);
+		}
+		// TODO Auto-generated method stub
+
+	}
+
+}
+=========================================================================
+Q.5) Create a class ArrayEx and sort the elemnts by using ArraySort method.
+-----------------------------------------------------------------------------
+
+package com.oops;
+import java.util.Arrays;
+public class ArraySort {
+
+	public static void main(String[] args) {
+		int arr[]= {32,45,21,56,8,34};
+		Arrays.sort(arr);
+		System.out.println("Sorted array:"+Arrays.toString(arr));
+
+	}
+
+}
+===========================================================================
+Q.6)  Create a class and apply static import package into that class.
+----------------------------------------------------------------------
+package com.oops;
+import static java.lang.Math.*;
+import static java.lang.System.*;
+public class StaticImport {
+	public static void main(String[] args) {
+		out.println(sqrt(25));
+		out.println(pow(9,2));
+		
+	}
+
+}
+
+====================================================================
+Q.7)create a class and create deafault and param construtcor and create constructor chaining.
+------------------------------------------------------------------------
+package com.oops;
+
+public class ConsChaining {
+	ConsChaining() {
+		this("sahil");
+		System.out.println("I am default constructor");
+	}
+	ConsChaining(String s) {
+		System.out.println("I am parameter constructor");
+	}
+
+	public static void main(String[] args) {
+		ConsChaining cc=new ConsChaining();
+		
+
+	}
+
+}

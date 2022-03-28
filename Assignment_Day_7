@@ -1,0 +1,73 @@
+************************************************************************************************************************************************************************************
+*****************************************************************************ASSIGNMENT_DAY_7*************************************************************************************
+************************************************************************************************************************************************************************************
+
+Q.4)create a PrivateAccess class, private data members when we are trying to call the private data member and method of a PrivateClass class it gives us a compile-time error because private data members and methods have an access level to PrivateClass class only.
+-------------------------------------------------------------------------------
+package com.oops;
+
+class A {
+	private int data=100;
+	private void message() {
+		System.out.println("i am pvt");
+	}
+}
+public class PrivateAM {
+	public static void main(String[] args) {
+		A ap=new A();
+		System.out.println(ap.data);
+		ap.message();
+		
+	}
+
+}
+
+=======================================================================================
+Q.5)create a class ProtectedClass under a package pack1 in which we declare a protected method show(), create a class ProtectedAccess under a package mypack1 and import a package pack1.
+------------------------------------------------------------------------------------------------
+
+package pack1;
+
+public class ProtectedClass {
+	protected void show() {
+		System.out.println("I am protected");
+	}
+
+}
+
+package mypack;
+import pack1.*;
+class ProtectedAccess extends ProtectedClass { 
+	public static void main(String[] args) {
+		ProtectedAccess obj=new ProtectedAccess();
+		obj.show();
+	}
+}
+=====================================================================================
+Q.2)Create a class Beverages,the Tea and Coffee sub classes are using the common method addMilk and they are implementing abstract method void addIngredient.
+---------------------------------------------------------------------------------------------------
+
+package com.oops;
+abstract class Tea {
+	abstract void addIngredient();
+	void addMilk() {
+		System.out.println("add milk in Tea");
+	}
+}
+class Coffee extends Tea {
+	//abstract void addIngredient();
+	void addIngredient() {
+		System.out.println("add milk in coffee");
+	}
+}
+public class Beverages  {
+
+	public static void main(String[] args) {
+		Coffee bev=new Coffee();
+		bev.addMilk();
+		bev.addIngredient();
+		// TODO Auto-generated method stub
+
+	}
+
+}

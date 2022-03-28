@@ -1,0 +1,166 @@
+************************************************************************************************************************************************************************************
+*****************************************************************************ASSIGNMENT_DAY_6*************************************************************************************
+************************************************************************************************************************************************************************************
+
+Q.1).Print default values of static & instance variables for different data types.
+----------------------------------------------------------------------------------
+package com.oops;
+
+public class DefaultValues {
+	   int varInt;
+	   float varFloat;
+	   boolean varBool;
+	   long varLong;
+	   byte varByte;
+	   short varShort;
+	   double varDouble;
+	   static int Int;
+	   static float Float;
+	   static boolean Bool;
+	   static long Long;
+	   static byte Byte;
+	   static short Short;
+	   static double Double;
+
+	public static void main(String[] args) {
+		DefaultValues def=new DefaultValues();
+		
+		
+		System.out.println("Default values for instance variables");
+		System.out.println("val2:" +def.varInt);
+		System.out.println("val2:" +def.varFloat);
+		System.out.println("val2:" +def.varBool);
+		System.out.println("val2:" +def.varLong);
+		System.out.println("val2:" +def.varByte);
+		System.out.println("val2:" +def.varShort);
+		System.out.println("val2:" +def.varDouble);
+		System.out.println("Default values for static variables");
+		System.out.println(Int);
+		System.out.println(Float);
+		System.out.println(Bool);
+		System.out.println(Long);
+		System.out.println(Byte);
+		System.out.println(Short);
+		System.out.println(Double);
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}
+======================================================================
+Q.2) observe the difference between methods calling and constructor calling.
+---------------------------------------------------------------------------
+package com.oops;
+
+public class ConsCalling {
+	void display() {
+		System.out.println("hi i am method calling");
+	}
+	ConsCalling() {
+		System.out.println("hi iam constructor calling");
+	}
+	public static void main(String[] args) {
+		ConsCalling cons=new ConsCalling();
+		cons.display();
+	}
+
+}
+==========================================================================================
+
+Q.3) Create Student class with global variables and related methods with constructor and without constructor.
+-------------------------------------------------------------------------------------------------------------
+package com.oops;
+
+public class Student {
+	int stId;
+	String stName;
+	Student() {
+		stId=108;
+		stName="choudhary";
+		System.out.println(stId);
+		System.out.println(stName);
+		
+	}
+	void value() {
+		this.stId=129;
+		this.stName="raghu";
+		System.out.println(stId);
+		System.out.println(stName);
+		
+	}
+
+	public static void main(String[] args) {
+		Student st=new Student();
+		st.value();		// TODO Auto-generated method stub
+
+	}
+
+}
+=================================================================================
+
+Q.4) Build a class Employee which contains details about the employee and compile and run its instance.
+-------------------------------------------------------------------------------------------------------
+package com.oops;
+
+public class Employee {
+	int empId,conNum;
+	String empName;
+	
+	    Employee(int i,int n,String s) {
+		 empId=id;
+		 empName=sn;
+		 conNum=number;
+	}
+	void display() {
+		System.out.println(empId+" "+empName+" "+conNum);
+	}
+
+	public static void main(String[] args) {
+		Employee emp=new Employee(10,322,"raghu");
+		emp.display();
+		
+	
+
+	}
+
+}
+================================================================================================
+
+Q.9)Create one Animal class(superclass), Dog class(subclass) the same method in the.
+---------------------------------------------------------------------------------------
+package com.oops;
+
+ class Animal {
+	void type() {
+		System.out.println("animal is parent class");
+	}
+
+}
+class dog extends Animal {
+	void type() {
+		System.out.println("dog is child class");
+	}
+	public static void main(String[] args) {
+		dog dg=new dog();
+		dg.type();
+	}
+}
+=============================================================================
+Q.6).subclass override the method in the superclass.
+-----------------------------------------------------------------------
+package com.oops;
+public class Employe {
+   float salary=40000;
+}
+
+public class Inheritence extends Employe {
+	int bonus=3000;
+	public static void main(String[] args) {
+		Inheritence i=new Inheritence();
+		System.out.println("salary is:"+i.salary);
+		System.out.println("bonus is:"+i.bonus);
+		
+	}
+
+}

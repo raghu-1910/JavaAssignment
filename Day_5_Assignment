@@ -1,0 +1,298 @@
+Q.1) Write Java programs to create an array an initialize and print the elements.
+
+public class question1 {
+	
+	public static void main(String[] args) {
+		int arr[]={12,34,56,78};
+		for(int i=0;i<4;i++)
+		{
+			System.out.println(arr[i]);
+		}
+
+	}
+
+}
+
+-----------------------------------------------------------
+Q.2) Print the array elements using for each loop.
+
+package com.arrays;
+
+public class Test1 {
+	public static void main (String[] args) {
+		int x[]= {34,56,32,57,76,67};
+		for(int j:x) {
+			System.out.println(j);
+		}
+	}
+
+}
+-------------------------------------------------
+Q.3) Calculate the average of numbers using Array.
+
+package com.arrays;
+class question2 {
+	public static void main(String args[]){
+		int arr[]={23,45,56,43};
+		int avg,sum=0;
+		for(int i=0;i<4;i++){
+			sum=sum+arr[i];
+		}
+		avg=sum/4;
+		System.out.println("Avg of number is:"+ avg);
+		
+		
+	}
+
+}
+-------------------------------------------------------
+Q.4) Convert char Array to String.
+package com.arrays;
+
+public class Test3 {
+	public static void main(String[] args) {
+		char arr[]= {'R','a','g','h','u'};
+		String str=String.valueOf(arr);
+		System.out.println(str);
+	}
+
+}
+------------------------------------------------------------------
+Q.5) Write a java program to get the class name of array in java.
+
+package com.arrays;
+
+public class Test4 {
+	public static void main (String[] args) {
+		int arr[]= {2,3,4};
+		System.out.println(arr.getClass().getName());
+	}
+
+}
+--------
+Q.6) Find out the min numbers in an array.
+
+package com.arrays;
+
+public class Test5 {
+
+	public static void main(String[] args) {
+		int a[]= {29,41,54,31,25};
+		min(a);
+
+	}
+	static void min(int arr[]) {
+		int min=arr[0];
+		for(int i=0;i<arr.length;i++) {
+			if(min>arr[i])
+				min=arr[i];
+		}
+		System.out.println(min);
+	}
+
+}
+-------
+Q.7) Add two Matrix using Multi-dimensional Arrays.
+
+package com.arrays;
+
+public class Test6 {
+
+	public static void main(String[] args) {
+		int a[][]= {{1,2,3},{3,4,6},{4,5,6}};
+		int b[][]= {{3,2,4},{6,4,7},{7,5,3}};
+		int c[][]=new int[3][3];
+		for(int i=0;i<3;i++) {
+			for(int j=0;j<3;j++) {
+				c[i][j]=a[i][j]+b[i][j];
+				System.out.print(c[i][j]+ " ");
+			}
+			System.out.println();
+			
+		}
+
+	}
+
+}
+--------
+*********************************************************************************************************
+*********************************SESSION_2***************************************************************
+*********************************************************************************************************
+Q.8) Create a Product class with constructor (observe the difference with or without constructor)
+
+package com.arrays;
+
+public class ParamEx {
+	ParamEx() {
+		System.out.println("without parameter");
+	}
+	ParamEx(int x) {
+		System.out.println("With parameter");
+	}
+	public static void main (String[] args) {
+		ParamEx pr=new ParamEx(66);
+		ParamEx p=new ParamEx();
+	}
+
+}
+-------
+Q.9) Create a student class using student properties and create and execute a method without a constructor.
+
+package com.arrays;
+
+public class Student {
+	int id;
+	String name;
+	void assign() {
+		id=218;
+		name="raghu";
+	}
+	void display() {
+		System.out.print(id+" "+name);
+	}
+
+	public static void main(String[] args) {
+		Student st=new Student();
+		st.assign();
+		st.display();
+
+	}
+
+}
+-------
+Q.10) Create a Calculator class and create static methods with or without return type.
+
+package com.arrays;
+//Without ReturnType
+public class Calculator {
+	 static void cal(int a,int b) {
+		 System.out.println(a+b);
+		 System.out.println(a-b);
+		 System.out.println(a*b);
+		 System.out.println(a/b);
+		
+	}
+
+	public static void main(String[] args) {
+		Calculator.cal(9,4);// static method calling
+		//System.out.println();
+		
+
+	}
+
+}
+//With ReturnType
+
+public class Calculator {
+	 static int cal(int a,int b) {
+		 return (a+b);
+		
+		
+	}
+
+	public static void main(String[] args) {
+		 System.out.println(Calculator.cal(9,4));// static method calling
+		
+
+	}
+
+}
+
+-------
+Q.11) Create class Test print all the methods of String.
+
+package com.arrays;
+
+public class StringMethods {
+
+	public static void main(String[] args) {
+		String s="sahilSingh";
+		System.out.println(s.toUpperCase());
+		System.out.println(s);
+		System.out.println(s.toLowerCase());
+	    System.out.println(s.startsWith("Sa"));
+	    System.out.println(s.endsWith("ln"));
+	    System.out.println(s.length());
+	    System.out.println(s.charAt(0));//S    
+	    System.out.println(s.charAt(3));
+
+	}
+
+}
+-----------------------------------------------------------
+Q.12) Create a class Add add two numbers by using Wrapper class.
+
+public class WrapperAdd {
+public static void main(String[] args) {
+	
+	        int x=Integer.parseInt(  args[0] );    //67
+	        int y=Integer.parseInt(  args[1] );    //67
+	        
+	        int z= x+y;
+	        System.out.println("addition of two numbers:"+z);
+	        
+	        
+}         
+}
+	
+-------------------------------------------------------------------
+Q.13.) Create a Calculator class and create instance methods with or without return type.
+
+
+//Instance With ReturnType
+public class Calculator {
+	 int cal(int a,int b) {
+		return a+b;
+		
+		
+	}
+
+	public static void main(String[] args) {
+		Calculator obj= new Calculator();
+		System.out.println(obj.cal(7,4));
+		
+
+	}
+//Instance Without ReturnType
+public class Calculator {
+	 void cal(int a,int b) {
+		 System.out.println(a+b);
+	}
+	public static void main(String[] args) {
+		Calculator obj= new Calculator();
+		
+		obj.cal(5, 6);
+
+	}
+
+}
+
+}
+----------------------------------------------------------------------------
+Q.14) Create a Student class without parameters and with parameters by using constructor. 		
+
+
+public class studentParam {
+		int sid;
+		String sname;
+		studentParam(int sid,String sname){
+			this.sid = sid;
+			this.sname = sname;
+		}
+		studentParam(){
+
+			System.out.println("default");
+		}
+		void display(){
+			
+			System.out.println(sid+" "+sname);
+		}
+		public static void main (String[] args) {
+			studentParam pr=new studentParam(45,"raghu");
+			studentParam p=new studentParam();
+			pr.display();
+			p.display();
+		}
+
+	}
+

@@ -1,0 +1,162 @@
+***********Day4****Assignment******************
+Q.1)Print Hello World.
+
+class Test {
+ public static void main(String[] args) {
+  System.out.println("Hello");
+  }
+  }
+----------------------------------------------
+  
+2.)Add two numbers/binary numbers/characters
+
+class Add{
+
+public static void main(String args[])
+{
+        int a=4,b=4;
+        System.out.println("Sum:"+(a+b));
+}
+}
+-----------------------------------------------
+
+Q.3)Calculate compound interest Calculate the power of a number Swap two numbers.
+
+class ci {
+ public static void main(String[] args)
+ {
+  double p=1000,r=10,t=2;
+  double comp=p*(Math.pow(1+r/100),t));
+  System.out.println("compound interest is:"+comp);
+ }
+}
+--------------------------------------------------
+
+Q.4) area of rectangle
+
+class rect {
+public static void main (String[] args) {
+ int l=12,b=13;
+ int area=l*b;
+ System.out.println(area);
+ }
+ }
+ -------------------------------------------------
+Q.5) print default values of primitive data type variable.
+
+ public class Demo {
+   static boolean val1;
+   static double val2;
+   static float val3;
+   static int val4;
+   static long val5;
+   static String val6;
+   public static void main(String[] args) {
+      System.out.println("Default values.....");
+      System.out.println("Val1 = " + val1);
+      System.out.println("Val2 = " + val2);
+      System.out.println("Val3 = " + val3);
+      System.out.println("Val4 = " + val4);
+      System.out.println("Val5 = " + val5);
+      System.out.println("Val6 = " + val6);
+   }
+}
+-------------------------------------------------------
+
+Q.6)Print Fibonacci series.
+
+class fibonaaci {
+ public static void main(String[] args)
+ {
+  int n1=0,n2=1,n3,count=10;
+  System.out.print(n1+" "+n2);
+  for(int i=0;i<count;i++) {
+   n3=n1+n2;
+   System.out.println(" "+n3);
+   n1=n2;
+   n2=n3;
+  }
+ }
+}
+-----------------------------------------------------
+Q.7) prime numbers.
+
+public class Prime {
+  public static void main(String[] args) {
+    int num = 29;
+    boolean flag = false;
+    for (int i = 2; i <= num / 2; ++i) {
+      if (num % i == 0) {
+        flag = true;
+        break;
+      }
+    }
+    if (!flag)
+      System.out.println(num + " is a prime number.");
+    else
+      System.out.println(num + " is not a prime number.");
+  }
+}
+-----------------------------------------------------
+Q.8) palindrome
+
+class Palin {
+  public static void main(String[] args) {
+    int num = 3553, reversedNum = 0, remainder;
+    int originalNum = num;
+    while (num != 0) {
+      remainder = num % 10;
+      reversedNum = reversedNum * 10 + remainder;
+      num /= 10;
+    }
+    if (originalNum == reversedNum) {
+      System.out.println(originalNum + " is Palindrome.");
+    }
+    else {
+      System.out.println(originalNum + " is not Palindrome.");
+    }
+  }
+}
+-----------------------------------------------------
+
+Q.9)switch case.
+
+public class Main {
+  public static void main(String[] args) {
+    int day = 4;
+    switch (day) {
+      case 1:
+        System.out.println("zero");
+        break;
+      case 2:
+        System.out.println("one");
+        break;
+      case 3:
+        System.out.println("two");
+        break;
+      case 4:
+        System.out.println("three");
+        break;
+      case 5:
+        System.out.println("four");
+        break;
+      case 6:
+        System.out.println("five");
+        break;
+      case 7:
+        System.out.println("Six");
+        break;
+      case 8:
+        System.out.println("Seven");
+        break;
+      case 9:
+        System.out.println("eight");
+        break;
+      case 10:
+        System.out.println("nine");
+        break;
+   default:
+     System.out.println("not in range from 0 to 9");
+    }
+  }
+}
